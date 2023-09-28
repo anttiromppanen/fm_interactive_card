@@ -34,7 +34,8 @@ const useFormStore = create<State & Actions>()((set) => ({
         ...newFields,
       },
     })),
-  setFormSubmitted: () => set({ formSubmitted: true }),
+  setFormSubmitted: () =>
+    set((state) => ({ formSubmitted: !state.formSubmitted })),
 }));
 
 export default useFormStore;

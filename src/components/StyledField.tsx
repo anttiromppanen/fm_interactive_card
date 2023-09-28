@@ -32,7 +32,7 @@ function StyledField({
   const [field, meta] = useField(props);
   const formik = useFormikContext();
 
-  const errorStyles = meta.touched && meta.error ? "border-userRed" : "";
+  const errorStyles = meta?.touched && meta?.error ? "border-userRed" : "";
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (field.name !== "cardNumber") {
@@ -49,8 +49,8 @@ function StyledField({
       sanitizedValue &&
       sanitizedValue
         .replace(/\s/g, "")
-        .match(/.{1,4}/g)
-        .join(" ");
+        ?.match(/.{1,4}/g)
+        ?.join(" ");
 
     updateFields({ cardNumber: formattedValue });
     return formik.setFieldValue("cardNumber", formattedValue);

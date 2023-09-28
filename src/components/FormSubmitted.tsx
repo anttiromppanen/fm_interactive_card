@@ -1,6 +1,9 @@
 import completeIcon from "../assets/images/icon-complete.svg";
+import useFormStore from "../store/useFormStore";
 
 function FormSubmitted() {
+  const handleButtonPress = useFormStore((state) => state.setFormSubmitted);
+
   return (
     <div className="flex flex-col items-center text-center">
       <img
@@ -16,6 +19,7 @@ function FormSubmitted() {
       </p>
       <button
         type="button"
+        onClick={handleButtonPress}
         className="
           mt-2 w-full rounded-lg bg-userVeryDarkViolet py-4 text-userLightGrayViolet
           hover:brightness-150"
