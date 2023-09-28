@@ -35,7 +35,18 @@ const useFormStore = create<State & Actions>()((set) => ({
       },
     })),
   setFormSubmitted: () =>
-    set((state) => ({ formSubmitted: !state.formSubmitted })),
+    set((state) => ({
+      formSubmitted: !state.formSubmitted,
+      fields: !state.formSubmitted
+        ? state.fields
+        : {
+            name: "JANE APPLESEED",
+            cardNumber: "0000 0000 0000 0000",
+            expMonth: "00",
+            expYear: "00",
+            cvc: "000",
+          },
+    })),
 }));
 
 export default useFormStore;
